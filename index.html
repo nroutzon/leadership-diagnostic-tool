@@ -1,326 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Leadership Diagnostic Tool – Symptom‑First</title>
-  <meta name="description" content="Self-assessment to identify leadership challenges by checking relatable statements." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leadership Diagnostic Tool</title>
   <style>
-    :root {
-      --bg: #ffffff;
-      --fg: #111111;
-      --muted: #666666;
-      --brand: #0f766e; /* teal-700 */
-      --brand-2: #115e59; /* teal-800 */
-      --surface: #f5f7f8;
-      --ring: #d9e3ea;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
     }
-    * { box-sizing: border-box; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; background: var(--bg); color: var(--fg); }
-    header { padding: 28px 20px 8px; text-align: center; }
-    header h1 { margin: 0 0 8px; font-size: clamp(22px, 3vw, 30px); }
-    header p { margin: 0; color: var(--muted); }
-
-    main { max-width: 860px; margin: 0 auto; padding: 20px; }
-
-    .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 14px; padding: 18px; }
-
-    .actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 18px; }
-    @media (min-width: 640px) { .actions { grid-template-columns: repeat(3, 1fr); } }
-
-    button, .btn { appearance: none; border: 0; border-radius: 10px; padding: 12px 14px; font-weight: 600; cursor: pointer; background: var(--brand); color: #fff; text-align: center; }
-    button:hover, .btn:hover { background: var(--brand-2); }
-    .btn-secondary { background: #334155; }
-    .btn-secondary:hover { background: #1f2937; }
-    .btn-ghost { background: transparent; color: var(--brand-2); border: 1px solid var(--ring); }
-
-    .symptom { display: flex; align-items: flex-start; gap: 10px; padding: 10px 8px; border-radius: 10px; }
-    .symptom:hover { background: #ffffff; }
-    .symptom input { margin-top: 3px; }
-
-    .results { display: none; margin-top: 20px; }
-    .result-card { border: 1px solid var(--ring); background: #fff; border-radius: 14px; padding: 16px; margin-bottom: 12px; }
-    .result-card h3 { margin: 0 0 6px; font-size: 18px; }
-    .muted { color: var(--muted); }
-
-    .footer-note { margin-top: 16px; font-size: 13px; color: var(--muted); }
-    .hr { height: 1px; background: var(--ring); margin: 18px 0; border: 0; }
-
-    .hidden { display: none !important; }
+    h1, h2 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 10px;
+    }
+    .results {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      border: none;
+      background: #333;
+      color: white;
+    }
+    button:hover {
+      background: #555;
+    }
+    .category-result {
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Leadership Diagnostic Tool</h1>
-    <p>Check the statements that resonate. Submit to reveal your likely leadership challenges.</p>
-  </header>
+  <h1>Leadership Diagnostic Tool</h1>
+  <p>Select the statements that resonate with your current leadership experience. When finished, click <b>Get My Diagnosis</b> below.</p>
 
-  <main>
-    <!-- SYMPTOM CHECKLIST (Symptom‑First; categories are hidden in data attributes) -->
-    <section class="card" aria-labelledby="symptom-title">
-      <h2 id="symptom-title" style="margin-top:0">Step 1 — Symptom Checklist</h2>
-      <p class="muted">No categories shown here on purpose. Simply select what feels true right now.</p>
+  <form id="diagnosticForm">
+    <div class="question">
+      <input type="checkbox" name="symptom" value="Not Making Time to Think"> I rarely block time on my calendar for reflection or strategic thinking.<br>
+      <input type="checkbox" name="symptom" value="Not Making Time to Think"> I feel stuck in reactive mode instead of planning ahead.<br>
+      <input type="checkbox" name="symptom" value="Not Making Time to Think"> I have ideas but never carve out space to process them.<br>
+      <input type="checkbox" name="symptom" value="Not Making Time to Think"> My prayer or journaling time is sporadic or nonexistent.<br>
 
-      <form id="diagnosticForm">
-        <div id="symptomList" aria-live="polite">
-          <!-- 40 statements; each input carries a data-cat for scoring -->
-          <!-- 1. Not Making Time to Think -->
-          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> I rarely block time on my calendar for reflection or strategic thinking.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> I feel stuck in reactive mode instead of planning ahead.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> I have ideas but never carve out space to process them.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> My prayer or journaling time is sporadic or nonexistent.</label>
+      <input type="checkbox" name="symptom" value="Vision Problems"> My team cannot clearly articulate our vision.<br>
+      <input type="checkbox" name="symptom" value="Vision Problems"> The vision feels fuzzy or uninspiring to me.<br>
+      <input type="checkbox" name="symptom" value="Vision Problems"> I struggle to invite others into shaping the vision.<br>
+      <input type="checkbox" name="symptom" value="Vision Problems"> Our vision doesn’t guide daily decision-making.<br>
 
-          <!-- 2. Vision Problems -->
-          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> My team cannot clearly articulate our vision.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> The vision feels fuzzy or uninspiring to me.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> I struggle to invite others into shaping the vision.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> Our vision doesn’t guide daily decision-making.</label>
+      <input type="checkbox" name="symptom" value="Poor Relationships"> Work feels tense, transactional, or distrustful.<br>
+      <input type="checkbox" name="symptom" value="Poor Relationships"> I avoid difficult conversations with my team.<br>
+      <input type="checkbox" name="symptom" value="Poor Relationships"> I don’t know much about my team’s personal wins or struggles.<br>
+      <input type="checkbox" name="symptom" value="Poor Relationships"> My words sometimes create distance instead of trust.<br>
+    </div>
 
-          <!-- 3. Not Bringing the Best People Along -->
-          <label class="symptom"><input type="checkbox" data-cat="Not Bringing the Best People Along" /> I settle for “good enough” hires rather than top talent.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Bringing the Best People Along" /> Some team members don’t align with our values.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Bringing the Best People Along" /> I feel like I must generate all the ideas myself.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Bringing the Best People Along" /> I avoid hard conversations about performance.</label>
+    <button type="button" onclick="calculateResults()">Get My Diagnosis</button>
+  </form>
 
-          <!-- 4. Poor Relationships -->
-          <label class="symptom"><input type="checkbox" data-cat="Poor Relationships" /> Work feels tense, transactional, or distrustful.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Poor Relationships" /> I avoid difficult conversations with my team.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Poor Relationships" /> I don’t know much about my team’s personal wins or struggles.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Poor Relationships" /> My words sometimes create distance instead of trust.</label>
-
-          <!-- 5. Not Cultivating a Culture of Growth -->
-          <label class="symptom"><input type="checkbox" data-cat="Not Cultivating a Culture of Growth" /> My team members are stagnating instead of learning.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Cultivating a Culture of Growth" /> We don’t have individual growth plans.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Cultivating a Culture of Growth" /> Training feels random, one‑off, or punitive.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Cultivating a Culture of Growth" /> I don’t model personal learning consistently.</label>
-
-          <!-- 6. Not Consistently Communicating -->
-          <label class="symptom"><input type="checkbox" data-cat="Not Consistently Communicating" /> My team feels “out of the loop.”</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Consistently Communicating" /> I don’t have a regular rhythm of 1:1s or team meetings.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Consistently Communicating" /> My updates aren’t consistent or clear.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Consistently Communicating" /> I often listen to respond instead of listening to understand.</label>
-
-          <!-- 7. Lack of Teamwork Culture -->
-          <label class="symptom"><input type="checkbox" data-cat="Lack of Teamwork Culture" /> My team works in silos rather than together.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Lack of Teamwork Culture" /> Conflict lingers instead of being addressed.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Lack of Teamwork Culture" /> Team wins are rarely celebrated.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Lack of Teamwork Culture" /> Collaboration feels forced or unnatural.</label>
-
-          <!-- 8. No Scalable Systems -->
-          <label class="symptom"><input type="checkbox" data-cat="No Scalable Systems" /> Processes are inconsistent across the organization.</label>
-          <label class="symptom"><input type="checkbox" data-cat="No Scalable Systems" /> Growth feels chaotic instead of stable.</label>
-          <label class="symptom"><input type="checkbox" data-cat="No Scalable Systems" /> We rely on verbal instructions instead of documented systems.</label>
-          <label class="symptom"><input type="checkbox" data-cat="No Scalable Systems" /> No one is assigned to maintain systems.</label>
-
-          <!-- 9. Poor Business Model -->
-          <label class="symptom"><input type="checkbox" data-cat="Poor Business Model" /> Our revenue doesn’t match our mission.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Poor Business Model" /> We struggle to sustain financial health.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Poor Business Model" /> Our business model feels patched together.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Poor Business Model" /> I can’t clearly explain how we make money and impact.</label>
-
-          <!-- 10. Ignoring the Bottom Line -->
-          <label class="symptom"><input type="checkbox" data-cat="Ignoring the Bottom Line" /> I don’t regularly review financial reports.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Ignoring the Bottom Line" /> Budgets don’t reflect our vision priorities.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Ignoring the Bottom Line" /> We focus on impact but neglect profitability.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Ignoring the Bottom Line" /> We don’t measure results beyond anecdotal stories.</label>
-        </div>
-
-        <div class="actions">
-          <button type="button" id="submitBtn">Get My Diagnosis</button>
-          <button type="button" class="btn-secondary" id="resetBtn">Reset</button>
-          <button type="button" class="btn-ghost" id="printBtn">Print / Save PDF</button>
-        </div>
-      </form>
-    </section>
-
-    <!-- RESULTS -->
-    <section id="results" class="results">
-      <div class="hr"></div>
-      <h2>Step 2 — Your Results</h2>
-      <p class="muted">These are your top challenge areas based on the symptoms you selected.</p>
-      <div id="resultList"></div>
-
-      <div class="card" style="margin-top:12px">
-        <h3 style="margin-top:0">What to Do Next</h3>
-        <ol>
-          <li>Start with your <b>top challenge</b> and work on it for the next 2–4 weeks.</li>
-          <li>Pair your work with the matching course module.</li>
-          <li>Re‑take this diagnostic quarterly to track changes.</li>
-        </ol>
-        <p class="footer-note">Note: If you have a tie, choose the area that feels most urgent or mission‑critical.</p>
-      </div>
-    </section>
-  </main>
+  <div class="results" id="results"></div>
 
   <script>
-    (function() {
+    function calculateResults() {
       const form = document.getElementById('diagnosticForm');
-      const submitBtn = document.getElementById('submitBtn');
-      const resetBtn = document.getElementById('resetBtn');
-      const printBtn = document.getElementById('printBtn');
-      const resultsEl = document.getElementById('results');
-      const resultList = document.getElementById('resultList');
+      const checkboxes = form.querySelectorAll('input[name="symptom"]:checked');
+      let scores = {};
 
-      function calculate() {
-        const checks = form.querySelectorAll('input[type="checkbox"]:checked');
-        const scores = new Map();
-        checks.forEach(cb => {
-          const cat = cb.getAttribute('data-cat');
-          scores.set(cat, (scores.get(cat) || 0) + 1);
-        });
+      checkboxes.forEach(cb => {
+        const category = cb.value;
+        scores[category] = (scores[category] || 0) + 1;
+      });
 
-        // Convert to array and sort by score desc
-        const sorted = Array.from(scores.entries()).sort((a, b) => b[1] - a[1]);
-        return sorted; // [ [category, count], ... ]
-      }
+      let resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = "<h2>Your Leadership Diagnostic Results</h2>";
 
-      function renderResults(sorted) {
-        resultList.innerHTML = '';
-        if (sorted.length === 0) {
-          resultList.innerHTML = '<div class="result-card"><h3>No selections yet</h3><p class="muted">Check a few statements above, then click <b>Get My Diagnosis</b>.</p></div>';
-          resultsEl.style.display = 'block';
-          return;
+      if (Object.keys(scores).length === 0) {
+        resultsDiv.innerHTML += "<p>No statements selected. Try again!</p>";
+      } else {
+        for (let cat in scores) {
+          resultsDiv.innerHTML += `<div class='category-result'><b>${cat}</b>: ${scores[cat]} symptoms checked.</div>`;
         }
 
-        // Show top 3 categories (or fewer if less data)
-        const top = sorted.slice(0, 3);
-        top.forEach(([cat, count], idx) => {
-          const diag = diagnosisCopy[cat] || '';
-          const mod = moduleMap[cat] ? ` → <span class="muted">Suggested module: ${moduleMap[cat]}</span>` : '';
-          const card = document.createElement('div');
-          card.className = 'result-card';
-          card.innerHTML = `<h3>${idx === 0 ? 'Primary' : idx === 1 ? 'Secondary' : 'Tertiary'}: ${cat}</h3>
-                            <p><b>${count}</b> symptom(s) selected.${mod}</p>
-                            ${diag ? `<p class="muted">${diag}</p>` : ''}`;
-          resultList.appendChild(card);
-        });
-
-        resultsEl.style.display = 'block';
-        // Persist selection counts for this session (optional)
-        try { sessionStorage.setItem('leadershipDiagScores', JSON.stringify(sorted)); } catch(e) {}
+        // Find top challenge
+        let topCategory = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+        resultsDiv.innerHTML += `<p><b>Your primary leadership challenge may be: ${topCategory}.</b></p>`;
       }
 
-      submitBtn.addEventListener('click', () => {
-        const sorted = calculate();
-        renderResults(sorted);
-        // Scroll to results on mobile
-        resultsEl.scrollIntoView({ behavior: 'smooth' });
-      });
-
-      resetBtn.addEventListener('click', () => {
-        form.reset();
-        resultsEl.style.display = 'none';
-        resultList.innerHTML = '';
-      });
-
-      printBtn.addEventListener('click', () => {
-        window.print();
-      });
-
-      // Optional: copy blocks for results
-      const diagnosisCopy = {
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Leadership Diagnostic Tool – Symptom‑First</title>
-  <meta name="description" content="Self-assessment to identify leadership challenges by checking relatable statements, with diagnosis → prescription bridges." />
-  <style>
-    :root {
-      --bg: #ffffff;
-      --fg: #111111;
-      --muted: #666666;
-      --brand: #0f766e; /* teal-700 */
-      --brand-2: #115e59; /* teal-800 */
-      --surface: #f5f7f8;
-      --ring: #d9e3ea;
+      resultsDiv.style.display = 'block';
     }
-    * { box-sizing: border-box; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; background: var(--bg); color: var(--fg); }
-    header { padding: 28px 20px 8px; text-align: center; }
-    header h1 { margin: 0 0 8px; font-size: clamp(22px, 3vw, 30px); }
-    header p { margin: 0; color: var(--muted); }
-
-    main { max-width: 860px; margin: 0 auto; padding: 20px; }
-
-    .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 14px; padding: 18px; }
-
-    .actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 18px; }
-    @media (min-width: 640px) { .actions { grid-template-columns: repeat(3, 1fr); } }
-
-    button, .btn { appearance: none; border: 0; border-radius: 10px; padding: 12px 14px; font-weight: 600; cursor: pointer; background: var(--brand); color: #fff; text-align: center; }
-    button:hover, .btn:hover { background: var(--brand-2); }
-    .btn-secondary { background: #334155; }
-    .btn-secondary:hover { background: #1f2937; }
-    .btn-ghost { background: transparent; color: var(--brand-2); border: 1px solid var(--ring); }
-
-    .symptom { display: flex; align-items: flex-start; gap: 10px; padding: 10px 8px; border-radius: 10px; }
-    .symptom:hover { background: #ffffff; }
-    .symptom input { margin-top: 3px; }
-
-    .results { display: none; margin-top: 20px; }
-    .result-card { border: 1px solid var(--ring); background: #fff; border-radius: 14px; padding: 16px; margin-bottom: 12px; }
-    .result-card h3 { margin: 0 0 6px; font-size: 18px; }
-    .muted { color: var(--muted); }
-
-    .footer-note { margin-top: 16px; font-size: 13px; color: var(--muted); }
-    .hr { height: 1px; background: var(--ring); margin: 18px 0; border: 0; }
-
-    .hidden { display: none !important; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Leadership Diagnostic Tool</h1>
-    <p>Check the statements that resonate. Submit to reveal your likely leadership challenges — and the positive prescription to move forward.</p>
-  </header>
-
-  <main>
-    <!-- SYMPTOM CHECKLIST (Symptom‑First; categories are hidden in data attributes) -->
-    <section class="card" aria-labelledby="symptom-title">
-      <h2 id="symptom-title" style="margin-top:0">Step 1 — Symptom Checklist</h2>
-      <p class="muted">No categories shown here on purpose. Simply select what feels true right now.</p>
-
-      <form id="diagnosticForm">
-        <div id="symptomList" aria-live="polite">
-          <!-- 40 statements; each input carries a data-cat for scoring -->
-          <!-- 1. Not Making Time to Think -->
-          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> I rarely block time on my calendar for reflection or strategic thinking.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> I feel stuck in reactive mode instead of planning ahead.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> I have ideas but never carve out space to process them.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> My prayer or journaling time is sporadic or nonexistent.</label>
-
-          <!-- 2. Vision Problems -->
-          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> My team cannot clearly articulate our vision.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> The vision feels fuzzy or uninspiring to me.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> I struggle to invite others into shaping the vision.</label>
-          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> Our'Not Making Time to Think': 'Likely cause: operating in \'do mode\' without protected \"design time\" for strategy and prayerful reflection.',
-        'Vision Problems': 'Likely cause: the vision is fuzzy, uninspiring, or not co-owned; clarify both action vision (what we do) and DNA vision (who we are).',
-        'Not Bringing the Best People Along': 'Likely cause: mis-hiring or misalignment; define \"great\" per role, recruit for competence + chemistry, and address fit quickly.',
-        'Poor Relationships': 'Likely cause: low trust/connection; model transparency, strengthen one-on-ones, and prioritize resolving relationship gaps.',
-        'Not Cultivating a Culture of Growth': 'Likely cause: training treated as an event vs. a culture; implement individual growth plans and model learning visibly.',
-        'Not Consistently Communicating': 'Likely cause: missing rhythms for 1:1s/team syncs or unclear priorities; listen with the heart and communicate consistently.',
-        'Lack of Teamwork Culture': 'Likely cause: silos and low collaboration; build the \"together\" ethos, celebrate team wins, and address conflict promptly.',
-        'No Scalable Systems': 'Likely cause: undocumented or outdated processes; design simple, shareable, updatable systems with clear ownership.',
-        'Poor Business Model': 'Likely cause: mission–margin misalignment; tighten the model so impact and profitability reinforce each other.',
-        'Ignoring the Bottom Line': 'Likely cause: weak financial rhythms; align budgets to vision, review reports, and track a small set of meaningful metrics.'
-      };
-
-      // Map categories to your course modules (adjust labels/links as needed)
-      const moduleMap = {
-        'Not Making Time to Think': 'Module 1 — Making Time to Think',
-        'Vision Problems': 'Module 2 — Clarifying Vision',
-        'Not Bringing the Best People Along': 'Module 3 — Bringing the Best People Along',
-        'Poor Relationships': 'Module 4 — Building Strong Relationships',
-        'Not Cultivating a Culture of Growth': 'Module 5 — Culture of Growth',
-        'Not Consistently Communicating': 'Module 6 — Consistent Communication',
-        'Lack of Teamwork Culture': 'Module 7 — Teamwork Culture',
-        'No Scalable Systems': 'Module 8 — Scalable Systems',
-        'Poor Business Model': 'Module 9 — Business Model',
-        'Ignoring the Bottom Line': 'Module 10 — Bottom Line Stewardship'
-      };
-    })();
   </script>
 </body>
 </html>
