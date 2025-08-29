@@ -219,7 +219,83 @@
 
       // Optional: copy blocks for results
       const diagnosisCopy = {
-        'Not Making Time to Think': 'Likely cause: operating in \'do mode\' without protected \"design time\" for strategy and prayerful reflection.',
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leadership Diagnostic Tool – Symptom‑First</title>
+  <meta name="description" content="Self-assessment to identify leadership challenges by checking relatable statements, with diagnosis → prescription bridges." />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #666666;
+      --brand: #0f766e; /* teal-700 */
+      --brand-2: #115e59; /* teal-800 */
+      --surface: #f5f7f8;
+      --ring: #d9e3ea;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; background: var(--bg); color: var(--fg); }
+    header { padding: 28px 20px 8px; text-align: center; }
+    header h1 { margin: 0 0 8px; font-size: clamp(22px, 3vw, 30px); }
+    header p { margin: 0; color: var(--muted); }
+
+    main { max-width: 860px; margin: 0 auto; padding: 20px; }
+
+    .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 14px; padding: 18px; }
+
+    .actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 18px; }
+    @media (min-width: 640px) { .actions { grid-template-columns: repeat(3, 1fr); } }
+
+    button, .btn { appearance: none; border: 0; border-radius: 10px; padding: 12px 14px; font-weight: 600; cursor: pointer; background: var(--brand); color: #fff; text-align: center; }
+    button:hover, .btn:hover { background: var(--brand-2); }
+    .btn-secondary { background: #334155; }
+    .btn-secondary:hover { background: #1f2937; }
+    .btn-ghost { background: transparent; color: var(--brand-2); border: 1px solid var(--ring); }
+
+    .symptom { display: flex; align-items: flex-start; gap: 10px; padding: 10px 8px; border-radius: 10px; }
+    .symptom:hover { background: #ffffff; }
+    .symptom input { margin-top: 3px; }
+
+    .results { display: none; margin-top: 20px; }
+    .result-card { border: 1px solid var(--ring); background: #fff; border-radius: 14px; padding: 16px; margin-bottom: 12px; }
+    .result-card h3 { margin: 0 0 6px; font-size: 18px; }
+    .muted { color: var(--muted); }
+
+    .footer-note { margin-top: 16px; font-size: 13px; color: var(--muted); }
+    .hr { height: 1px; background: var(--ring); margin: 18px 0; border: 0; }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Leadership Diagnostic Tool</h1>
+    <p>Check the statements that resonate. Submit to reveal your likely leadership challenges — and the positive prescription to move forward.</p>
+  </header>
+
+  <main>
+    <!-- SYMPTOM CHECKLIST (Symptom‑First; categories are hidden in data attributes) -->
+    <section class="card" aria-labelledby="symptom-title">
+      <h2 id="symptom-title" style="margin-top:0">Step 1 — Symptom Checklist</h2>
+      <p class="muted">No categories shown here on purpose. Simply select what feels true right now.</p>
+
+      <form id="diagnosticForm">
+        <div id="symptomList" aria-live="polite">
+          <!-- 40 statements; each input carries a data-cat for scoring -->
+          <!-- 1. Not Making Time to Think -->
+          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> I rarely block time on my calendar for reflection or strategic thinking.</label>
+          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> I feel stuck in reactive mode instead of planning ahead.</label>
+          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> I have ideas but never carve out space to process them.</label>
+          <label class="symptom"><input type="checkbox" data-cat="Not Making Time to Think" /> My prayer or journaling time is sporadic or nonexistent.</label>
+
+          <!-- 2. Vision Problems -->
+          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> My team cannot clearly articulate our vision.</label>
+          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> The vision feels fuzzy or uninspiring to me.</label>
+          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> I struggle to invite others into shaping the vision.</label>
+          <label class="symptom"><input type="checkbox" data-cat="Vision Problems" /> Our'Not Making Time to Think': 'Likely cause: operating in \'do mode\' without protected \"design time\" for strategy and prayerful reflection.',
         'Vision Problems': 'Likely cause: the vision is fuzzy, uninspiring, or not co-owned; clarify both action vision (what we do) and DNA vision (who we are).',
         'Not Bringing the Best People Along': 'Likely cause: mis-hiring or misalignment; define \"great\" per role, recruit for competence + chemistry, and address fit quickly.',
         'Poor Relationships': 'Likely cause: low trust/connection; model transparency, strengthen one-on-ones, and prioritize resolving relationship gaps.',
