@@ -41,6 +41,13 @@
     .category-result {
       margin-bottom: 15px;
     }
+    .prescription {
+      margin-top: 25px;
+      padding: 12px;
+      border: 1px dashed #999;
+      border-radius: 7px;
+      background: #f3f6ff;
+    }
   </style>
 </head>
 <body>
@@ -71,6 +78,15 @@
   <div class="results" id="results"></div>
 
   <script>
+    function getPrescription(category) {
+      const prescriptions = {
+        "Not Making Time to Think": "Block time on your calendar for reflection at least once a week. Try journaling or walking to process ideas. Set boundaries for deep work.",
+        "Vision Problems": "Revisit your vision with your team. Invite feedback. Clarify why it matters and connect it to daily decisions. Communicate it regularly.",
+        "Poor Relationships": "Schedule regular 1:1s. Ask about team members' personal goals and challenges. Practice active listening and address tensions quickly."
+      };
+      return prescriptions[category] || "Keep growing your leadership! Seek feedback and support.";
+    }
+
     function calculateResults() {
       const form = document.getElementById('diagnosticForm');
       const checkboxes = form.querySelectorAll('input[name="symptom"]:checked');
@@ -94,6 +110,9 @@
         // Find top challenge
         let topCategory = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
         resultsDiv.innerHTML += `<p><b>Your primary leadership challenge may be: ${topCategory}.</b></p>`;
+
+        // Add prescription
+        resultsDiv.innerHTML += `<div class="prescription"><h3>Prescription</h3><p>${getPrescription(topCategory)}</p></div>`;
       }
 
       resultsDiv.style.display = 'block';
