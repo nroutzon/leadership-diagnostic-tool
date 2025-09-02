@@ -12,9 +12,12 @@
     .btn-primary { background-color: #3e7cb6; border: none;}
     .btn-primary:hover { background-color: #225a8c;}
     .progress-bar { background-color: #3e7cb6;}
-    .chart-container { max-width: 900px; margin: 0 auto;}
     .advice { font-size: 1rem; margin-bottom: .75rem;}
     .statement-label { font-size: 1rem; }
+    .module-section { margin-bottom: 2rem; }
+    .module-title { background: #e9eff5; padding: .5em 1em; border-radius: 6px; font-size: 1.2em; margin-bottom: .5em; }
+    .answer-table { font-size: 0.95em; margin-bottom: 1em; }
+    .summary-score { font-weight: bold; font-size: 1.1em; margin-bottom: .5em; }
   </style>
 </head>
 <body>
@@ -29,7 +32,7 @@
     <div class="card p-4 mb-4">
       <h2 class="mb-3">Leadership Self-Assessment</h2>
       <form id="diagnostic-form">
-        <!-- All statements, NO categories, NO grouping, NO module mapping -->
+        <!-- Just a long list: no categories, no module mapping -->
         <div class="mb-3">
           <label class="form-label statement-label">I rarely block time on my calendar for reflection or strategic thinking.</label>
           <select class="form-select question" required>
@@ -443,19 +446,15 @@
     <!-- Results Section -->
     <div id="results-section" style="display:none;">
       <div class="card p-4 mb-4">
-        <h3 class="mb-3">Your Leadership Profile</h3>
-        <div class="chart-container mb-3">
-          <canvas id="resultsChart"></canvas>
-        </div>
-        <div id="advice-summary" class="mb-3"></div>
+        <h3 class="mb-3">Your Leadership Results by Module</h3>
+        <div id="module-results"></div>
       </div>
     </div>
   </div>
   <!-- Bootstrap JS & Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // All statements
+    // Statements and mapping to modules
     const statements = [
       "I rarely block time on my calendar for reflection or strategic thinking.",
       "I feel stuck in reactive mode instead of planning ahead.",
@@ -498,16 +497,65 @@
       "We focus on impact but neglect profitability.",
       "We don’t measure results beyond anecdotal stories."
     ];
-    // Advice per statement (customize as needed)
-    function getAdvice(idx, score) {
-      if (score <= 2) {
-        return "Consider making this area a focus for growth. Reflect on this statement for practical steps.";
-      } else if (score === 3) {
+
+    // Map each statement to a module (customize as needed)
+    const statementToModule = [
+      "Module 1: Strategic Reflection",
+      "Module 1: Strategic Reflection",
+      "Module 1: Strategic Reflection",
+      "Module 1: Strategic Reflection",
+      "Module 2: Vision & Clarity",
+      "Module 2: Vision & Clarity",
+      "Module 2: Vision & Clarity",
+      "Module 2: Vision & Clarity",
+      "Module 3: Building Teams",
+      "Module 3: Building Teams",
+      "Module 3: Building Teams",
+      "Module 3: Building Teams",
+      "Module 3: Building Teams",
+      "Module 3: Building Teams",
+      "Module 3: Building Teams",
+      "Module 3: Building Teams",
+      "Module 4: Growth & Learning",
+      "Module 4: Growth & Learning",
+      "Module 4: Growth & Learning",
+      "Module 4: Growth & Learning",
+      "Module 5: Communication",
+      "Module 5: Communication",
+      "Module 5: Communication",
+      "Module 5: Communication",
+      "Module 5: Collaboration",
+      "Module 5: Collaboration",
+      "Module 5: Collaboration",
+      "Module 5: Collaboration",
+      "Module 6: Systems",
+      "Module 6: Systems",
+      "Module 6: Systems",
+      "Module 6: Systems",
+      "Module 7: Finance & Impact",
+      "Module 7: Finance & Impact",
+      "Module 7: Finance & Impact",
+      "Module 7: Finance & Impact",
+      "Module 7: Finance & Impact",
+      "Module 7: Finance & Impact",
+      "Module 7: Finance & Impact",
+      "Module 7: Finance & Impact"
+    ];
+
+    // All modules (unique)
+    const modules = Array.from(new Set(statementToModule));
+
+    // Advice per module based on average score
+    function moduleAdvice(avgScore) {
+      if (avgScore <= 2) {
+        return "This module is a priority for growth. Review the module for practical steps.";
+      } else if (avgScore === 3) {
         return "You're doing well here, but a little more attention could yield greater impact.";
       } else {
         return "Excellent! Keep modeling and sharing your strengths in this area.";
       }
     }
+
     // Progress Bar Logic
     const questions = document.querySelectorAll('.question');
     const progressBar = document.getElementById('progressBar');
@@ -522,8 +570,8 @@
         progressBar.textContent = percent + '%';
       });
     });
-    // Chart.js and Results Logic
-    let chart;
+
+    // Results Logic
     document.getElementById('diagnostic-form').addEventListener('submit', function(e) {
       e.preventDefault();
       // Gather scores
@@ -531,44 +579,39 @@
       document.querySelectorAll('.question').forEach(q => {
         scores.push(parseInt(q.value) || 1);
       });
+
       // Hide form, show results
       document.getElementById('diagnostic-form').style.display = 'none';
       document.getElementById('results-section').style.display = '';
-      // Build Chart
-      if (chart) chart.destroy();
-      const ctx = document.getElementById('resultsChart').getContext('2d');
-      chart = new Chart(ctx, {
-        type: 'radar',
-        data: {
-          labels: statements,
-          datasets: [{
-            label: 'Your Leadership Profile',
-            data: scores,
-            backgroundColor: 'rgba(62,124,182,0.2)',
-            borderColor: '#3e7cb6',
-            borderWidth: 2
-          }]
-        },
-        options: {
-          plugins: {
-            legend: { display: false }
-          },
-          scales: {
-            r: {
-              angleLines: { display: false },
-              suggestedMin: 1,
-              suggestedMax: 4,
-              pointLabels: { font: { size: 10 } }
-            }
+
+      // Compile results per module
+      let moduleResultsHTML = "";
+      modules.forEach(mod => {
+        let moduleStatements = [];
+        let moduleScores = [];
+        statements.forEach((statement, idx) => {
+          if (statementToModule[idx] === mod) {
+            moduleStatements.push({
+              statement: statement,
+              score: scores[idx]
+            });
+            moduleScores.push(scores[idx]);
           }
-        }
+        });
+        // Table of answers
+        moduleResultsHTML += `<div class="module-section"><div class="module-title">${mod}</div>`;
+        moduleResultsHTML += `<table class="table answer-table"><thead><tr><th>Statement</th><th>Your Answer</th></tr></thead><tbody>`;
+        moduleStatements.forEach(s => {
+          let answerText = ["Never","Sometimes","Often","Always"][s.score-1];
+          moduleResultsHTML += `<tr><td>${s.statement}</td><td>${answerText}</td></tr>`;
+        });
+        moduleResultsHTML += `</tbody></table>`;
+        // Module advice
+        let avg = moduleScores.reduce((a,b)=>a+b,0)/moduleScores.length;
+        moduleResultsHTML += `<div class="summary-score">Score: ${avg.toFixed(2)} / 4</div>`;
+        moduleResultsHTML += `<div class="advice">${moduleAdvice(Math.round(avg))}</div></div>`;
       });
-      // Build advice summary
-      let adviceHTML = '<h5 class="mb-3">Personalized Advice Per Statement</h5>';
-      statements.forEach((statement, idx) => {
-        adviceHTML += `<div class="advice"><strong>${statement}</strong><br>${getAdvice(idx, scores[idx])}</div>`;
-      });
-      document.getElementById('advice-summary').innerHTML = adviceHTML;
+      document.getElementById('module-results').innerHTML = moduleResultsHTML;
     });
   </script>
 </body>
