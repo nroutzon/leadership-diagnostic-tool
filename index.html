@@ -14,9 +14,8 @@
     .progress-bar { background-color: #3e7cb6;}
     .advice { font-size: 1rem; margin-bottom: .75rem;}
     .statement-label { font-size: 1rem; }
-    .module-section { margin-bottom: 2rem; }
-    .module-title { background: #e9eff5; padding: .5em 1em; border-radius: 6px; font-size: 1.2em; margin-bottom: .5em; }
-    .answer-table { font-size: 0.95em; margin-bottom: 1em; }
+    .category-summary { background: #e9eff5; border-radius: .5em; margin-bottom: 1em; padding: 1em;}
+    .module-list { margin-bottom: .5em; }
     .summary-score { font-weight: bold; font-size: 1.1em; margin-bottom: .5em; }
   </style>
 </head>
@@ -32,407 +31,93 @@
     <div class="card p-4 mb-4">
       <h2 class="mb-3">Leadership Self-Assessment</h2>
       <form id="diagnostic-form">
-        <!-- Just a long list: no categories, no module mapping -->
-        <div class="mb-3">
-          <label class="form-label statement-label">I rarely block time on my calendar for reflection or strategic thinking.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I feel stuck in reactive mode instead of planning ahead.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I have ideas but never carve out space to process them.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">My prayer or journaling time is sporadic or nonexistent.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">My team cannot clearly articulate our vision.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">The vision feels fuzzy or uninspiring to me.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I struggle to invite others into shaping the vision.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Our vision doesn’t guide daily decision-making.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I settle for ‘good enough’ hires rather than top talent.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Some team members don’t align with our values.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I feel like I must generate all the ideas myself.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I avoid hard conversations about performance.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Work feels tense, transactional, or distrustful.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I avoid difficult conversations with my team.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I don’t know much about my team’s personal wins or struggles.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">My words sometimes create distance instead of trust.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">My team members are stagnating instead of learning.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">We don’t have individual growth plans.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Training feels random, one-off, or punitive.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I don’t model personal learning consistently.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">My team feels ‘out of the loop.’</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I don’t have a regular rhythm of 1:1s or team meetings.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">My updates aren’t consistent or clear.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I often listen to respond instead of listening to understand.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">My team works in silos rather than together.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Conflict lingers instead of being addressed.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Team wins are rarely celebrated.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Collaboration feels forced or unnatural.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Processes are inconsistent across the organization.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Growth feels chaotic instead of stable.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">We rely on verbal instructions instead of documented systems.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">No one is assigned to maintain systems.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Our revenue doesn’t match our mission.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">We struggle to sustain financial health.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Our business model feels patched together.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I can’t clearly explain how we make money and impact.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">I don’t regularly review financial reports.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">Budgets don’t reflect our vision priorities.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">We focus on impact but neglect profitability.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label statement-label">We don’t measure results beyond anecdotal stories.</label>
-          <select class="form-select question" required>
-            <option value="">Select...</option>
-            <option value="1">Never</option>
-            <option value="2">Sometimes</option>
-            <option value="3">Often</option>
-            <option value="4">Always</option>
-          </select>
-        </div>
+        <!-- FLAT LIST OF STATEMENTS, NO CATEGORIES VISIBLE -->
+        <!-- Vision -->
+        <div class="mb-3"><label class="form-label statement-label">I rarely block time on my calendar for reflection or strategic thinking.</label>
+          <select class="form-select question" data-category="Vision" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I feel stuck in reactive mode instead of planning ahead.</label>
+          <select class="form-select question" data-category="Vision" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I have ideas but never carve out space to process them.</label>
+          <select class="form-select question" data-category="Vision" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">My prayer or journaling time is sporadic or nonexistent.</label>
+          <select class="form-select question" data-category="Vision" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">My team cannot clearly articulate our vision.</label>
+          <select class="form-select question" data-category="Vision" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">The vision feels fuzzy or uninspiring to me.</label>
+          <select class="form-select question" data-category="Vision" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I struggle to invite others into shaping the vision.</label>
+          <select class="form-select question" data-category="Vision" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">Our vision doesn’t guide daily decision-making.</label>
+          <select class="form-select question" data-category="Vision" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <!-- Team -->
+        <div class="mb-3"><label class="form-label statement-label">I settle for ‘good enough’ hires rather than top talent.</label>
+          <select class="form-select question" data-category="Team" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">Some team members don’t align with our values.</label>
+          <select class="form-select question" data-category="Team" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I feel like I must generate all the ideas myself.</label>
+          <select class="form-select question" data-category="Team" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I avoid hard conversations about performance.</label>
+          <select class="form-select question" data-category="Team" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">Work feels tense, transactional, or distrustful.</label>
+          <select class="form-select question" data-category="Team" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I avoid difficult conversations with my team.</label>
+          <select class="form-select question" data-category="Team" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I don’t know much about my team’s personal wins or struggles.</label>
+          <select class="form-select question" data-category="Team" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">My words sometimes create distance instead of trust.</label>
+          <select class="form-select question" data-category="Team" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <!-- Growth -->
+        <div class="mb-3"><label class="form-label statement-label">My team members are stagnating instead of learning.</label>
+          <select class="form-select question" data-category="Growth" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">We don’t have individual growth plans.</label>
+          <select class="form-select question" data-category="Growth" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">Training feels random, one-off, or punitive.</label>
+          <select class="form-select question" data-category="Growth" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I don’t model personal learning consistently.</label>
+          <select class="form-select question" data-category="Growth" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <!-- Communication -->
+        <div class="mb-3"><label class="form-label statement-label">My team feels ‘out of the loop.’</label>
+          <select class="form-select question" data-category="Communication" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I don’t have a regular rhythm of 1:1s or team meetings.</label>
+          <select class="form-select question" data-category="Communication" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">My updates aren’t consistent or clear.</label>
+          <select class="form-select question" data-category="Communication" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I often listen to respond instead of listening to understand.</label>
+          <select class="form-select question" data-category="Communication" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">My team works in silos rather than together.</label>
+          <select class="form-select question" data-category="Communication" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">Conflict lingers instead of being addressed.</label>
+          <select class="form-select question" data-category="Communication" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">Team wins are rarely celebrated.</label>
+          <select class="form-select question" data-category="Communication" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">Collaboration feels forced or unnatural.</label>
+          <select class="form-select question" data-category="Communication" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <!-- Systems -->
+        <div class="mb-3"><label class="form-label statement-label">Processes are inconsistent across the organization.</label>
+          <select class="form-select question" data-category="Systems" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">Growth feels chaotic instead of stable.</label>
+          <select class="form-select question" data-category="Systems" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">We rely on verbal instructions instead of documented systems.</label>
+          <select class="form-select question" data-category="Systems" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">No one is assigned to maintain systems.</label>
+          <select class="form-select question" data-category="Systems" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <!-- Finance -->
+        <div class="mb-3"><label class="form-label statement-label">Our revenue doesn’t match our mission.</label>
+          <select class="form-select question" data-category="Finance" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">We struggle to sustain financial health.</label>
+          <select class="form-select question" data-category="Finance" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">Our business model feels patched together.</label>
+          <select class="form-select question" data-category="Finance" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I can’t clearly explain how we make money and impact.</label>
+          <select class="form-select question" data-category="Finance" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">I don’t regularly review financial reports.</label>
+          <select class="form-select question" data-category="Finance" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">Budgets don’t reflect our vision priorities.</label>
+          <select class="form-select question" data-category="Finance" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">We focus on impact but neglect profitability.</label>
+          <select class="form-select question" data-category="Finance" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
+        <div class="mb-3"><label class="form-label statement-label">We don’t measure results beyond anecdotal stories.</label>
+          <select class="form-select question" data-category="Finance" required><option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option></select></div>
         <button type="submit" class="btn btn-primary mt-4">See Results</button>
       </form>
       <!-- Progress Bar -->
@@ -446,115 +131,65 @@
     <!-- Results Section -->
     <div id="results-section" style="display:none;">
       <div class="card p-4 mb-4">
-        <h3 class="mb-3">Your Leadership Results by Module</h3>
-        <div id="module-results"></div>
+        <h3 class="mb-3">Your Leadership Summary</h3>
+        <div id="category-summaries"></div>
       </div>
     </div>
   </div>
-  <!-- Bootstrap JS & Chart.js -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Statements and mapping to modules
-    const statements = [
-      "I rarely block time on my calendar for reflection or strategic thinking.",
-      "I feel stuck in reactive mode instead of planning ahead.",
-      "I have ideas but never carve out space to process them.",
-      "My prayer or journaling time is sporadic or nonexistent.",
-      "My team cannot clearly articulate our vision.",
-      "The vision feels fuzzy or uninspiring to me.",
-      "I struggle to invite others into shaping the vision.",
-      "Our vision doesn’t guide daily decision-making.",
-      "I settle for ‘good enough’ hires rather than top talent.",
-      "Some team members don’t align with our values.",
-      "I feel like I must generate all the ideas myself.",
-      "I avoid hard conversations about performance.",
-      "Work feels tense, transactional, or distrustful.",
-      "I avoid difficult conversations with my team.",
-      "I don’t know much about my team’s personal wins or struggles.",
-      "My words sometimes create distance instead of trust.",
-      "My team members are stagnating instead of learning.",
-      "We don’t have individual growth plans.",
-      "Training feels random, one-off, or punitive.",
-      "I don’t model personal learning consistently.",
-      "My team feels ‘out of the loop.’",
-      "I don’t have a regular rhythm of 1:1s or team meetings.",
-      "My updates aren’t consistent or clear.",
-      "I often listen to respond instead of listening to understand.",
-      "My team works in silos rather than together.",
-      "Conflict lingers instead of being addressed.",
-      "Team wins are rarely celebrated.",
-      "Collaboration feels forced or unnatural.",
-      "Processes are inconsistent across the organization.",
-      "Growth feels chaotic instead of stable.",
-      "We rely on verbal instructions instead of documented systems.",
-      "No one is assigned to maintain systems.",
-      "Our revenue doesn’t match our mission.",
-      "We struggle to sustain financial health.",
-      "Our business model feels patched together.",
-      "I can’t clearly explain how we make money and impact.",
-      "I don’t regularly review financial reports.",
-      "Budgets don’t reflect our vision priorities.",
-      "We focus on impact but neglect profitability.",
-      "We don’t measure results beyond anecdotal stories."
-    ];
-
-    // Map each statement to a module (customize as needed)
-    const statementToModule = [
-      "Module 1: Strategic Reflection",
-      "Module 1: Strategic Reflection",
-      "Module 1: Strategic Reflection",
-      "Module 1: Strategic Reflection",
-      "Module 2: Vision & Clarity",
-      "Module 2: Vision & Clarity",
-      "Module 2: Vision & Clarity",
-      "Module 2: Vision & Clarity",
-      "Module 3: Building Teams",
-      "Module 3: Building Teams",
-      "Module 3: Building Teams",
-      "Module 3: Building Teams",
-      "Module 3: Building Teams",
-      "Module 3: Building Teams",
-      "Module 3: Building Teams",
-      "Module 3: Building Teams",
-      "Module 4: Growth & Learning",
-      "Module 4: Growth & Learning",
-      "Module 4: Growth & Learning",
-      "Module 4: Growth & Learning",
-      "Module 5: Communication",
-      "Module 5: Communication",
-      "Module 5: Communication",
-      "Module 5: Communication",
-      "Module 5: Collaboration",
-      "Module 5: Collaboration",
-      "Module 5: Collaboration",
-      "Module 5: Collaboration",
-      "Module 6: Systems",
-      "Module 6: Systems",
-      "Module 6: Systems",
-      "Module 6: Systems",
-      "Module 7: Finance & Impact",
-      "Module 7: Finance & Impact",
-      "Module 7: Finance & Impact",
-      "Module 7: Finance & Impact",
-      "Module 7: Finance & Impact",
-      "Module 7: Finance & Impact",
-      "Module 7: Finance & Impact",
-      "Module 7: Finance & Impact"
-    ];
-
-    // All modules (unique)
-    const modules = Array.from(new Set(statementToModule));
-
-    // Advice per module based on average score
-    function moduleAdvice(avgScore) {
-      if (avgScore <= 2) {
-        return "This module is a priority for growth. Review the module for practical steps.";
-      } else if (avgScore === 3) {
-        return "You're doing well here, but a little more attention could yield greater impact.";
-      } else {
-        return "Excellent! Keep modeling and sharing your strengths in this area.";
+    // Leadership categories and modules mapping
+    const categories = {
+      "Vision": {
+        module: "Module 1: Vision & Strategy",
+        advice: [
+          "Vision is a growth area. Prioritize clarifying and communicating your vision. Review the module for strategies.",
+          "Vision is developing. Keep working to make your vision clear and engaging.",
+          "Vision is strong! Continue to inspire and involve your team with your vision."
+        ]
+      },
+      "Team": {
+        module: "Module 2: Building Teams",
+        advice: [
+          "Team leadership is a priority for growth. Focus on team alignment and trust.",
+          "Team leadership is developing. Keep building trust and addressing challenges.",
+          "Team leadership is strong! Keep investing in your team’s growth and alignment."
+        ]
+      },
+      "Growth": {
+        module: "Module 3: Growth & Learning",
+        advice: [
+          "Growth is a priority for development. Build a culture of learning.",
+          "Growth is developing. Continue to encourage personal and team growth.",
+          "Growth is strong! Model and celebrate learning."
+        ]
+      },
+      "Communication": {
+        module: "Module 4: Communication & Collaboration",
+        advice: [
+          "Communication is a priority for development. Work on clarity and connection.",
+          "Communication is developing. Continue to nurture trust and collaboration.",
+          "Communication is strong! Keep communicating clearly and regularly."
+        ]
+      },
+      "Systems": {
+        module: "Module 5: Systems & Processes",
+        advice: [
+          "Systems is a growth area. Focus on building stable, documented processes.",
+          "Systems is developing. Continue to strengthen your systems.",
+          "Systems is strong! Your organization benefits from your process focus."
+        ]
+      },
+      "Finance": {
+        module: "Module 6: Finance & Impact",
+        advice: [
+          "Finance/Impact is a priority for growth. Review financial health and strategy.",
+          "Finance/Impact is developing. Keep aligning finances with mission.",
+          "Finance/Impact is strong! You lead with both impact and sustainability."
+        ]
       }
-    }
+    };
 
     // Progress Bar Logic
     const questions = document.querySelectorAll('.question');
@@ -574,44 +209,41 @@
     // Results Logic
     document.getElementById('diagnostic-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      // Gather scores
-      const scores = [];
+      // Gather scores and categories
+      let scores = [];
+      let cats = [];
       document.querySelectorAll('.question').forEach(q => {
         scores.push(parseInt(q.value) || 1);
+        cats.push(q.getAttribute('data-category'));
       });
+
+      // Compile scores by category
+      let categoryScores = {};
+      let categoryCounts = {};
+      scores.forEach((score, idx) => {
+        let cat = cats[idx];
+        if (!categoryScores[cat]) { categoryScores[cat] = 0; categoryCounts[cat] = 0; }
+        categoryScores[cat] += score;
+        categoryCounts[cat] += 1;
+      });
+
+      // Build summary per category
+      let summaryHTML = "";
+      Object.keys(categories).forEach(cat => {
+        if (categoryCounts[cat]) {
+          let avg = categoryScores[cat] / categoryCounts[cat];
+          let adviceIdx = avg <= 2 ? 0 : avg < 3.5 ? 1 : 2;
+          summaryHTML += `<div class="category-summary"><strong>${cat}</strong> <br>`;
+          summaryHTML += `<div class="module-list">Thinkific Module: ${categories[cat].module}</div>`;
+          summaryHTML += `<div class="summary-score">Average Score: ${avg.toFixed(2)} / 4</div>`;
+          summaryHTML += `<div class="advice">${categories[cat].advice[adviceIdx]}</div></div>`;
+        }
+      });
+      document.getElementById('category-summaries').innerHTML = summaryHTML;
 
       // Hide form, show results
       document.getElementById('diagnostic-form').style.display = 'none';
       document.getElementById('results-section').style.display = '';
-
-      // Compile results per module
-      let moduleResultsHTML = "";
-      modules.forEach(mod => {
-        let moduleStatements = [];
-        let moduleScores = [];
-        statements.forEach((statement, idx) => {
-          if (statementToModule[idx] === mod) {
-            moduleStatements.push({
-              statement: statement,
-              score: scores[idx]
-            });
-            moduleScores.push(scores[idx]);
-          }
-        });
-        // Table of answers
-        moduleResultsHTML += `<div class="module-section"><div class="module-title">${mod}</div>`;
-        moduleResultsHTML += `<table class="table answer-table"><thead><tr><th>Statement</th><th>Your Answer</th></tr></thead><tbody>`;
-        moduleStatements.forEach(s => {
-          let answerText = ["Never","Sometimes","Often","Always"][s.score-1];
-          moduleResultsHTML += `<tr><td>${s.statement}</td><td>${answerText}</td></tr>`;
-        });
-        moduleResultsHTML += `</tbody></table>`;
-        // Module advice
-        let avg = moduleScores.reduce((a,b)=>a+b,0)/moduleScores.length;
-        moduleResultsHTML += `<div class="summary-score">Score: ${avg.toFixed(2)} / 4</div>`;
-        moduleResultsHTML += `<div class="advice">${moduleAdvice(Math.round(avg))}</div></div>`;
-      });
-      document.getElementById('module-results').innerHTML = moduleResultsHTML;
     });
   </script>
 </body>
