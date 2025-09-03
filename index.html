@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Leadership Diagnostic Tool</title>
+  <title>Leadership Diagnostic Checklist</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body { background: #f7f9fb; }
@@ -11,19 +11,16 @@
     .card { border-radius: 1rem; box-shadow: 0 4px 24px rgba(34,58,94,0.06);}
     .btn-primary { background-color: #3e7cb6; border: none;}
     .btn-primary:hover { background-color: #225a8c;}
-    .progress-bar { background-color: #3e7cb6;}
-    .lesson-summary { background: #e9eff5; border-radius: .5em; margin-bottom: 1em; padding: 1em;}
-    .lesson-title { font-weight: bold; font-size: 1.15em; margin-bottom: .25em;}
-    .summary-score { font-weight: bold; font-size: 1.06em; margin-bottom: .5em;}
-    .advice { font-size: 1rem; margin-bottom: .75rem;}
+    .summary-box { background: #e9eff5; border-radius: .5em; margin-bottom: 1em; padding: 1em;}
+    .lesson-title { font-weight: bold; font-size: 1.12em; margin-bottom: .25em;}
+    .advice { font-size: 1rem; margin-bottom: .5rem;}
     .statement-label { font-size: 1rem; }
-    .question { margin-bottom: 1em; }
   </style>
 </head>
 <body>
   <nav class="navbar mb-4">
     <div class="container">
-      <a class="navbar-brand" href="#">Leadership Diagnostic</a>
+      <a class="navbar-brand" href="#">Leadership Diagnostic Checklist</a>
       <span class="navbar-text">Empower your leadership journey</span>
     </div>
   </nav>
@@ -31,215 +28,49 @@
     <div class="card p-4 mb-4">
       <h2 class="mb-3">Leadership Self-Assessment</h2>
       <form id="diagnostic-form">
-        <!-- FLAT LIST OF STATEMENTS -->
-        <div class="mb-3"><label class="form-label statement-label">I rarely block time on my calendar for reflection or strategic thinking.</label>
-          <select class="form-select question" data-lesson="1" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I feel stuck in reactive mode instead of planning ahead.</label>
-          <select class="form-select question" data-lesson="1" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I have ideas but never carve out space to process them.</label>
-          <select class="form-select question" data-lesson="1" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">My prayer or journaling time is sporadic or nonexistent.</label>
-          <select class="form-select question" data-lesson="1" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">My team cannot clearly articulate our vision.</label>
-          <select class="form-select question" data-lesson="2" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">The vision feels fuzzy or uninspiring to me.</label>
-          <select class="form-select question" data-lesson="2" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I struggle to invite others into shaping the vision.</label>
-          <select class="form-select question" data-lesson="2" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Our vision doesn’t guide daily decision-making.</label>
-          <select class="form-select question" data-lesson="2" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I settle for ‘good enough’ hires rather than top talent.</label>
-          <select class="form-select question" data-lesson="3" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Some team members don’t align with our values.</label>
-          <select class="form-select question" data-lesson="3" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I feel like I must generate all the ideas myself.</label>
-          <select class="form-select question" data-lesson="3" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I avoid hard conversations about performance.</label>
-          <select class="form-select question" data-lesson="3" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Work feels tense, transactional, or distrustful.</label>
-          <select class="form-select question" data-lesson="4" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I avoid difficult conversations with my team.</label>
-          <select class="form-select question" data-lesson="4" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I don’t know much about my team’s personal wins or struggles.</label>
-          <select class="form-select question" data-lesson="4" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">My words sometimes create distance instead of trust.</label>
-          <select class="form-select question" data-lesson="4" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">My team members are stagnating instead of learning.</label>
-          <select class="form-select question" data-lesson="5" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">We don’t have individual growth plans.</label>
-          <select class="form-select question" data-lesson="5" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Training feels random, one-off, or punitive.</label>
-          <select class="form-select question" data-lesson="5" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I don’t model personal learning consistently.</label>
-          <select class="form-select question" data-lesson="5" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">My team feels ‘out of the loop.’</label>
-          <select class="form-select question" data-lesson="6" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I don’t have a regular rhythm of 1:1s or team meetings.</label>
-          <select class="form-select question" data-lesson="6" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">My updates aren’t consistent or clear.</label>
-          <select class="form-select question" data-lesson="6" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I often listen to respond instead of listening to understand.</label>
-          <select class="form-select question" data-lesson="6" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">My team works in silos rather than together.</label>
-          <select class="form-select question" data-lesson="7" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Conflict lingers instead of being addressed.</label>
-          <select class="form-select question" data-lesson="7" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Team wins are rarely celebrated.</label>
-          <select class="form-select question" data-lesson="7" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Collaboration feels forced or unnatural.</label>
-          <select class="form-select question" data-lesson="7" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Processes are inconsistent across the organization.</label>
-          <select class="form-select question" data-lesson="8" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Growth feels chaotic instead of stable.</label>
-          <select class="form-select question" data-lesson="8" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">We rely on verbal instructions instead of documented systems.</label>
-          <select class="form-select question" data-lesson="8" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">No one is assigned to maintain systems.</label>
-          <select class="form-select question" data-lesson="8" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Our revenue doesn’t match our mission.</label>
-          <select class="form-select question" data-lesson="9" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">We struggle to sustain financial health.</label>
-          <select class="form-select question" data-lesson="9" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Our business model feels patched together.</label>
-          <select class="form-select question" data-lesson="9" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I can’t clearly explain how we make money and impact.</label>
-          <select class="form-select question" data-lesson="9" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">I don’t regularly review financial reports.</label>
-          <select class="form-select question" data-lesson="10" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">Budgets don’t reflect our vision priorities.</label>
-          <select class="form-select question" data-lesson="10" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">We focus on impact but neglect profitability.</label>
-          <select class="form-select question" data-lesson="10" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label statement-label">We don’t measure results beyond anecdotal stories.</label>
-          <select class="form-select question" data-lesson="10" required>
-            <option value="">Select...</option><option value="1">Never</option><option value="2">Sometimes</option><option value="3">Often</option><option value="4">Always</option>
-          </select>
-        </div>
+        <!-- FLAT LIST OF STATEMENTS AS CHECKBOXES -->
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="1" id="q1"><label class="form-check-label statement-label" for="q1">I rarely block time on my calendar for reflection or strategic thinking.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="1" id="q2"><label class="form-check-label statement-label" for="q2">I feel stuck in reactive mode instead of planning ahead.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="1" id="q3"><label class="form-check-label statement-label" for="q3">I have ideas but never carve out space to process them.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="1" id="q4"><label class="form-check-label statement-label" for="q4">My prayer or journaling time is sporadic or nonexistent.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="2" id="q5"><label class="form-check-label statement-label" for="q5">My team cannot clearly articulate our vision.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="2" id="q6"><label class="form-check-label statement-label" for="q6">The vision feels fuzzy or uninspiring to me.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="2" id="q7"><label class="form-check-label statement-label" for="q7">I struggle to invite others into shaping the vision.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="2" id="q8"><label class="form-check-label statement-label" for="q8">Our vision doesn’t guide daily decision-making.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="3" id="q9"><label class="form-check-label statement-label" for="q9">I settle for ‘good enough’ hires rather than top talent.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="3" id="q10"><label class="form-check-label statement-label" for="q10">Some team members don’t align with our values.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="3" id="q11"><label class="form-check-label statement-label" for="q11">I feel like I must generate all the ideas myself.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="3" id="q12"><label class="form-check-label statement-label" for="q12">I avoid hard conversations about performance.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="4" id="q13"><label class="form-check-label statement-label" for="q13">Work feels tense, transactional, or distrustful.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="4" id="q14"><label class="form-check-label statement-label" for="q14">I avoid difficult conversations with my team.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="4" id="q15"><label class="form-check-label statement-label" for="q15">I don’t know much about my team’s personal wins or struggles.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="4" id="q16"><label class="form-check-label statement-label" for="q16">My words sometimes create distance instead of trust.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="5" id="q17"><label class="form-check-label statement-label" for="q17">My team members are stagnating instead of learning.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="5" id="q18"><label class="form-check-label statement-label" for="q18">We don’t have individual growth plans.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="5" id="q19"><label class="form-check-label statement-label" for="q19">Training feels random, one-off, or punitive.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="5" id="q20"><label class="form-check-label statement-label" for="q20">I don’t model personal learning consistently.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="6" id="q21"><label class="form-check-label statement-label" for="q21">My team feels ‘out of the loop.’</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="6" id="q22"><label class="form-check-label statement-label" for="q22">I don’t have a regular rhythm of 1:1s or team meetings.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="6" id="q23"><label class="form-check-label statement-label" for="q23">My updates aren’t consistent or clear.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="6" id="q24"><label class="form-check-label statement-label" for="q24">I often listen to respond instead of listening to understand.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="7" id="q25"><label class="form-check-label statement-label" for="q25">My team works in silos rather than together.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="7" id="q26"><label class="form-check-label statement-label" for="q26">Conflict lingers instead of being addressed.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="7" id="q27"><label class="form-check-label statement-label" for="q27">Team wins are rarely celebrated.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="7" id="q28"><label class="form-check-label statement-label" for="q28">Collaboration feels forced or unnatural.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="8" id="q29"><label class="form-check-label statement-label" for="q29">Processes are inconsistent across the organization.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="8" id="q30"><label class="form-check-label statement-label" for="q30">Growth feels chaotic instead of stable.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="8" id="q31"><label class="form-check-label statement-label" for="q31">We rely on verbal instructions instead of documented systems.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="8" id="q32"><label class="form-check-label statement-label" for="q32">No one is assigned to maintain systems.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="9" id="q33"><label class="form-check-label statement-label" for="q33">Our revenue doesn’t match our mission.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="9" id="q34"><label class="form-check-label statement-label" for="q34">We struggle to sustain financial health.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="9" id="q35"><label class="form-check-label statement-label" for="q35">Our business model feels patched together.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="9" id="q36"><label class="form-check-label statement-label" for="q36">I can’t clearly explain how we make money and impact.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="10" id="q37"><label class="form-check-label statement-label" for="q37">I don’t regularly review financial reports.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="10" id="q38"><label class="form-check-label statement-label" for="q38">Budgets don’t reflect our vision priorities.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="10" id="q39"><label class="form-check-label statement-label" for="q39">We focus on impact but neglect profitability.</label></div>
+        <div class="form-check mb-2"><input class="form-check-input question" type="checkbox" data-lesson="10" id="q40"><label class="form-check-label statement-label" for="q40">We don’t measure results beyond anecdotal stories.</label></div>
         <button type="submit" class="btn btn-primary mt-4">See Results</button>
       </form>
-      <div class="mt-4">
-        <label>Progress</label>
-        <div class="progress" style="height: 20px;">
-          <div class="progress-bar" role="progressbar" id="progressBar" style="width: 0%;">0%</div>
-        </div>
-      </div>
     </div>
     <div id="results-section" style="display:none;">
       <div class="card p-4 mb-4">
@@ -248,111 +79,48 @@
       </div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Lessons and advice mapping
+    // Lesson titles and advice
     const lessons = [
-      { name: "Lesson 1: Set Aside Time to Think", advice: [
-          "Carve out regular, protected time for strategic reflection and prayer.",
-          "Your thinking rhythms are developing. Try scheduling consistent reflection time.",
-          "Excellent! Keep prioritizing time to think and pray."
-        ]},
-      { name: "Lesson 2: Clarify and Share Your Vision", advice: [
-          "Vision is a growth area. Focus on making your vision clear and compelling.",
-          "Vision is developing. Keep communicating and refining your vision.",
-          "Vision is strong! Continue inspiring your team with your vision."
-        ]},
-      { name: "Lesson 3: Build With the Right People", advice: [
-          "Team building is a growth area. Invest in hiring, alignment, and feedback.",
-          "Team building is developing. Keep working on team fit and accountability.",
-          "Team building is strong! Keep nurturing your team."
-        ]},
-      { name: "Lesson 4: Strengthen Key Relationships", advice: [
-          "Relationships need attention. Build trust and have honest conversations.",
-          "Relationships are developing. Keep connecting and supporting your team.",
-          "Relationships are strong! Continue fostering trust and care."
-        ]},
-      { name: "Lesson 5: Foster a Culture of Growth", advice: [
-          "Growth culture is a priority. Encourage learning and create growth plans.",
-          "Growth culture is developing. Keep supporting personal and team development.",
-          "Growth culture is strong! Model and celebrate growth."
-        ]},
-      { name: "Lesson 6: Communicate with Clarity and Consistency", advice: [
-          "Communication needs attention. Increase clarity, consistency, and feedback.",
-          "Communication is developing. Keep refining your message and rhythm.",
-          "Communication is strong! Continue to connect and inform your team."
-        ]},
-      { name: "Lesson 7: Create a Teamwork Culture", advice: [
-          "Teamwork needs attention. Address conflict and celebrate collaboration.",
-          "Teamwork is developing. Keep building trust and celebrating wins.",
-          "Teamwork is strong! Your team is collaborating well."
-        ]},
-      { name: "Lesson 8: Design Scalable Models", advice: [
-          "Systems need work. Document key processes and assign clear owners.",
-          "Systems are developing. Keep refining your scalable models.",
-          "Systems are strong! Your organization benefits from consistency."
-        ]},
-      { name: "Lesson 9: Align Mission and Model", advice: [
-          "Mission/model alignment needs attention. Clarify your financial model and mission fit.",
-          "Mission and model are developing. Keep refining your strategy.",
-          "Mission/model alignment is strong! Impact and sustainability are clear."
-        ]},
-      { name: "Lesson 10: Steward the Bottom Line", advice: [
-          "Financial stewardship needs attention. Review reports and align budgets with priorities.",
-          "Financial stewardship is developing. Keep improving your financial processes.",
-          "Financial stewardship is strong! Keep balancing impact and profitability."
-        ]}
+      { name: "Set Aside Time to Think", advice: "Consider scheduling regular time for reflection and strategic thinking." },
+      { name: "Clarify and Share Your Vision", advice: "Work on making your vision clear and sharing it often with your team." },
+      { name: "Build With the Right People", advice: "Focus on building a team that aligns with your values and strengths." },
+      { name: "Strengthen Key Relationships", advice: "Invest in honest conversations and building trust with your team." },
+      { name: "Foster a Culture of Growth", advice: "Encourage ongoing learning and development for yourself and your team." },
+      { name: "Communicate with Clarity and Consistency", advice: "Enhance communication rhythms and clarity to keep your team informed." },
+      { name: "Create a Teamwork Culture", advice: "Address teamwork challenges and celebrate wins together." },
+      { name: "Design Scalable Models", advice: "Document systems and processes to support sustainable growth." },
+      { name: "Align Mission and Model", advice: "Ensure your mission and financial model are aligned for impact and sustainability." },
+      { name: "Steward the Bottom Line", advice: "Regularly review financials and budgets to steward resources wisely." }
     ];
 
-    // Progress Bar Logic
-    const questions = document.querySelectorAll('.question');
-    const progressBar = document.getElementById('progressBar');
-    questions.forEach(q => {
-      q.addEventListener('change', () => {
-        let answered = 0;
-        questions.forEach(q => { if (q.value !== "") answered++; });
-        let percent = Math.round((answered / questions.length) * 100);
-        progressBar.style.width = percent + '%';
-        progressBar.textContent = percent + '%';
-      });
-    });
-
-    // Results Logic
     document.getElementById('diagnostic-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      // Gather scores and lesson mappings
-      let scores = [];
-      let lessonNumbers = [];
-      document.querySelectorAll('.question').forEach(q => {
-        scores.push(parseInt(q.value) || 1);
-        lessonNumbers.push(parseInt(q.getAttribute('data-lesson')));
-      });
-
-      // Compile scores by lesson
-      let lessonScores = Array(10).fill(0);
+      // Gather checked/unchecked status per lesson
       let lessonCounts = Array(10).fill(0);
-      scores.forEach((score, idx) => {
-        let lessonIdx = lessonNumbers[idx] - 1;
-        lessonScores[lessonIdx] += score;
-        lessonCounts[lessonIdx] += 1;
+      let lessonUnchecked = Array(10).fill(0);
+      document.querySelectorAll('.question').forEach(q => {
+        let idx = parseInt(q.getAttribute('data-lesson')) - 1;
+        lessonCounts[idx]++;
+        if (!q.checked) lessonUnchecked[idx]++;
       });
 
-      // Build summary per lesson
+      // Build summary: show advice for lessons with unchecked items (>0)
       let summaryHTML = "";
       lessons.forEach((lesson, idx) => {
-        if (lessonCounts[idx]) {
-          let avg = lessonScores[idx] / lessonCounts[idx];
-          let adviceIdx = avg <= 2 ? 0 : avg < 3.5 ? 1 : 2;
-          summaryHTML += `<div class="lesson-summary">
+        if (lessonUnchecked[idx] > 0) {
+          summaryHTML += `<div class="summary-box">
             <div class="lesson-title">${lesson.name}</div>
-            <div class="summary-score">Average Score: ${avg.toFixed(2)} / 4</div>
-            <div class="advice">${lesson.advice[adviceIdx]}</div>
+            <div class="advice">${lesson.advice}</div>
+            <div><strong>Growth opportunities:</strong> ${lessonUnchecked[idx]} of ${lessonCounts[idx]} items</div>
           </div>`;
         }
       });
+      if (!summaryHTML) {
+        summaryHTML = "<div class='summary-box'>Congratulations! All items checked—you're modeling healthy leadership across all lessons.</div>";
+      }
       document.getElementById('lesson-summaries').innerHTML = summaryHTML;
 
-      // Hide form, show results
       document.getElementById('diagnostic-form').style.display = 'none';
       document.getElementById('results-section').style.display = '';
     });
